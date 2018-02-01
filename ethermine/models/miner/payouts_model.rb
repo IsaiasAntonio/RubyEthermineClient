@@ -3,12 +3,12 @@ module Ethermine::Model::Miner
     attr_reader :paid_on, :start, :_end, :amount, :tx_hash
 
     def initialize(miner)
-      proccess_attibutes(miner) 
+      process_attributes(miner) 
     end
     
     def self.all(data)
       data.map do |values|
-        self.new(value)
+        self.new(values)
       end
     end
 

@@ -3,12 +3,12 @@ module Ethermine::Model::Miner
     attr_reader :block, :amount
 
     def initialize(miner)
-      proccess_attributes(miner) 
+      process_attributes(miner) 
     end
     
     def self.all(data)
       data.map do |values|
-        self.new(value)
+        self.new(values)
       end
     end
 

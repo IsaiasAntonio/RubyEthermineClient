@@ -4,12 +4,12 @@ module Ethermine::Model::Miner
 	        :valid_shares, :invalid_shares, :stale_shares, :active_workers 
 
     def initialize(miner)
-      proccess_attributes(miner) 
+      process_attributes(miner) 
     end
     
     def self.all(data)
       data.map do |values|
-        self.new(value)
+        self.new(values)
       end
     end
 
