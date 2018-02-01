@@ -6,12 +6,12 @@ module Ethermine::Model::Miner
 		:coins_per_min, :usd_per_min, :btc_per_min 
     
     def initialize(miner)
-      proccess_attributes(miner)
+      process_attributes(miner)
     end
 
     def self.all(data)
       data.map do |values|
-        self.new(value)
+        self.new(values)
       end
     end
 

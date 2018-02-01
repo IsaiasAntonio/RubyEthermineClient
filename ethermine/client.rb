@@ -18,7 +18,7 @@ module Ethermine
     end
 
     def customrequest(uri)
-      send_request("#{BASE_URL}#{uri})
+      send_request("#{BASE_URL2}#{uri}")
     end
 
   end
