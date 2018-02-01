@@ -1,9 +1,11 @@
 require 'net/http'
 require 'json'
+require 'pry'
 
 module Ethermine
   module Client
     BASE_URL = 'https://api.ethermine.org/'
+    BASE_URL2= 'http://api.ethpool.org/'
 
     def request(uri)
       send_request("#{BASE_URL}#{uri}")
@@ -15,5 +17,10 @@ module Ethermine
       raise StandardError, response.body unless response.message == 'OK'
       JSON.parse(response.body)['data']
     end
+
+    def customrequest(uri)
+      send_request("#{BASE_URL2}#{uri}")
+    end
+
   end
 end
