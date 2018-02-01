@@ -5,6 +5,11 @@ module Ethermine::Api
       @miner = miner
     end
 
+    def blocks
+      hash = customrequest("miner/#{@miner}/blocks")
+      Ethermine::Model::Miner::History.all(hash)
+    end 
+
     def history
       hash = request("miner/#{@miner}/history")
       Ethermine::Model::Miner::History.all(hash)
