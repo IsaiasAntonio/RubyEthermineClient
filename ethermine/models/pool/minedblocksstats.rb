@@ -4,5 +4,6 @@ module Ethermine::Model::Pool
     def initialize
       pool_api = Ethermine::Api::PoolApi.new
       process_attributes(pool_api.minedblockstats)
+    end
   end
 end
