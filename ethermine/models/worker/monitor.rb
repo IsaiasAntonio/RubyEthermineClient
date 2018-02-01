@@ -1,7 +1,6 @@
 module Ethermine::Model::Worker
-  class Statistic < Ethermine::Model::Model
-    attr_reader :worker, :time, :last_seen,
-      :reported_hash_rate, :average_hash_rate,
+  class Monitor < Ethermine::Model::Model
+    attr_reader :worker, :last_seen,
       :current_hash_rate, :valid_shares, :invalid_shares, :stale_shares
 
     def initialize(data)

@@ -1,29 +1,29 @@
 module Ethermine::Api
   class WorkerApi < BaseApi
-    def initialize(miner, worker)
+    def initialize(miner, worker = nil)
       @miner = miner
       @worker = worker
     end
 
     def all_statistics
-      hashes = request("miner/#{@miner}/workers")
-      hashes.map do |hash|
-        Ethermine::Model::Worker::Statistic.new(hash) 
-      end
+      array = request("miner/#{@miner}/workers")
+      Ethermine::Model::Worker::Statistic.all(array)
     end
 
     def statistics
-      hash = request("miner/#{@miner}/worker/#{@worker}/currentStats")
-      hash['worker'] = @worker
-      Ethermine::Model::Worker::Statistic.new(hash)
+      data = request("miner/#{@miner}/worker/#{@worker}/currentStats")
+      data['worker'] = @worker
+      Ethermine::Model::Worker::Statistic.new(data)
     end
 
     def historical_statistics
-      request("miner/#{@miner}/worker/#{@worker}/history")
+      array = request("miner/#{@miner}/worker/#{@worker}/history")
+      Ethermine::Model::Worker::HistoricalStatistic.all(array)
     end
 
     def monitor
-      request("miner/#{@miner}/workers/monitor")
+      array = request("miner/#{@miner}/workers/monitor")
+      Ethermine::Model::Worker::Monitor.all(array)
     end
   end
 end

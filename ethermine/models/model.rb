@@ -1,6 +1,6 @@
 module Ethermine::Model
   class Model
-    def proccess_attributes(attributes)
+    def process_attributes(attributes)
       attributes.each do |key, value|
         self.instance_variable_set(convert_name(key), value)
       end

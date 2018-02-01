@@ -1,19 +1,24 @@
 module Ethermine::Api
   class PoolApi < BaseApi
     def poolstatistics
-      request("poolStats")
+      array = request("poolStats")
+      Ethermine::Model::Pool::Statistics.all(array['minedBlocks'])
     end
     def creditlist
-      customrequest('credits')
+      array = customrequest('credits')
+      Ethermine::Model::Pool::CreditList.all(array)
     end
     def minedblockstats
-      request("blocks/history")
+      array = request("blocks/history")
+      Ethermine::Model::Pool::MinedBlocksStats.all(array)
     end
     def networkstatistics
-      request("networkStats")
+      array = request("networkStats")
+      Ethermine::Model::Pool::NetworkStatistics.all(array)
     end
     def serverhashratestats
-      request("servers/history")
+      array = request("servers/history")
+      Ethermine::Model::Pool::ServerHashRate.all(array)
     end
   end
 end
