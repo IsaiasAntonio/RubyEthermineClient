@@ -1,4 +1,5 @@
 require 'net/http'
+require 'json'
 
 module Ethermine
   module Client
@@ -6,12 +7,14 @@ module Ethermine
     BASE_URL2= 'https://ethpool.org/'
 
     def request(uri)
-      request_uri = URI("#{BASE_URL}#{uri}")
+      send_request("#{BASE_URL}#{uri}")
+    end
+
+    def send_request(url)
+      request_uri = URI(url)
       response = Net::HTTP.get_response(request_uri)
-      result = {
-        success: response.message,
-        data: response.body
-      }
+      raise StandardError, response.body unless response.message == 'OK'
+      JSON.parse(response.body)['data']
     end
 
     def customrequest(uri)
