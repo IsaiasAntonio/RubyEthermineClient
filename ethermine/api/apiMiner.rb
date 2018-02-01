@@ -27,12 +27,12 @@ module Ethermine::Api
 
     def settings
       hash = request("/miner/#{@miner}/settings") 
-      Ethermine::Model::Miner::Blocks.all(hash)
+      Ethermine::Model::Miner::Settings.all(hash)
     end
 
     def statistics
       hash = request("/miner/#{@miner}/currentStats")
-      Ethermine::Model::Miner::Blocks.all(hash)
+      Ethermine::Model::Miner::Statistics.all(hash)
     end
   end
 end
