@@ -4,6 +4,7 @@ module Ethermine::Model::Pool
     def initialize(data)
       process_attributes(data)
     end
+
     def self.all(datas)
 	    datas.map do |data|
 		    self.new(data)
