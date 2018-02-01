@@ -1,9 +1,14 @@
 module Ethermine::Model::Pool
   class CreditList < Ethermine::Model::Model
     attr_reader :miner, :hashrate, :credit
-    def initialize
-      pool_api = Ethermine::Api::PoolApi.new
-      process_attributes(pool_api.creditlist)
+    def initialize(data)
+      process_attributes(data)
+    end
+
+    def self.all(datas)
+	    datas.map do |data|
+		    self.new(data)
+	    end
     end
   end
 end
