@@ -1,10 +1,9 @@
 require 'net/http'
 require 'json'
-
 module Ethermine
   module Client
     BASE_URL = 'https://api.ethermine.org/'
-    BASE_URL2= 'https://ethpool.org/'
+    BASE_URL2= 'http://api.ethpool.org/'
 
     def request(uri)
       send_request("#{BASE_URL}#{uri}")
